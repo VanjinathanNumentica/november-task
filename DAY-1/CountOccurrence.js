@@ -4,22 +4,27 @@
 // countChars("hello");
 // Output: { h:1, e:1, l:2, o:1 }
 
-function countChars(str) 
+function countChars(sentence) 
 {
-    let counts = {};
+    if (typeof sentence !== 'string' || sentence.length === 0 )
+        return "Error: Empty String or Input must be string";
 
-    for (let i = 0; i < str.length; i++) 
+    let characterCounts = {};
+
+    for (let i = 0; i < sentence.length; i++) 
         {
-        let char = str[i];
-        if (counts[char]) 
+        let lowerChar = sentence[i].toLowerCase();
+        if (characterCounts[lowerChar]) 
             {
-            counts[char]++;
+            characterCounts[lowerChar]++;
         } else {
-            counts[char] = 1;
+            characterCounts[lowerChar] = 1;
         }
     }
 
-    return counts;
+    return characterCounts;
 }
 
-console.log(countChars("hello"));
+const input = "Hello";
+const result = countChars(input);
+console.log("Output:", result);

@@ -4,23 +4,24 @@
 // findRange([3, 45, 12, 7, 89]);
 // Output: 86
 
-function findRange(arr) {
-    if (arr.length === 0) return 0;
+function findRange(numbers) {
+    if (numbers.length === 0 || numbers.length === 1) 
+        return "Error:Empty Array or Single Value";
 
-    let max = arr[0];
-    let min = arr[0];
+    let largest = numbers[0];
+    let smallest = numbers[0];
 
-    for (let i = 1; i < arr.length; i++) {
-        if (arr[i] > max) {
-            max = arr[i];
+    for (let i = 1; i < numbers.length; i++) {
+        if (numbers[i] > largest) {
+            largest = numbers[i];
         }
-        if (arr[i] < min) {
-            min = arr[i];
+        if (numbers[i] < smallest) {
+            smallest = numbers[i];
         }
     }
 
-    return max - min;
+    return largest - smallest;
 }
 
 const result = findRange([3, 45, 12, 7, 89]);
-console.log("Range (Max - Min):", result);
+console.log("Output:", result);

@@ -1,35 +1,39 @@
 // **Get Unique Characters**
-// Write a function to return all characters that appear only once in a string.
+// Write a function to return all Characters that appear only once in a string.
 // Example:
 // uniqueChars("success");
 // Output: "ue"
 
-function uniqueChars(str) 
+function uniqueChars(sentence) 
 {
-    let count = {};
+    if (typeof sentence !== 'string' || sentence.length === 0 )
+        return "Error: Empty String or Input must be string";
 
-    for (let i = 0; i < str.length; i++) 
+    let characterCounts = {};
+
+    for (let i = 0; i < sentence.length; i++) 
         {
-        let char = str[i];
-        if (count[char]) 
+        let currentChar = sentence[i].toLowerCase();
+        if (characterCounts[currentChar]) 
             {
-            count[char]++;
+            characterCounts[currentChar]++;
         } else 
             {
-            count[char] = 1;
+            characterCounts[currentChar] = 1;
         }
     }
 
-    let unique = "";
-    for (let i = 0; i < str.length; i++) 
+    let uniqueCharacters = "";
+    for (let i = 0; i < sentence.length; i++) 
         {
-        if (count[str[i]] === 1) 
+        if (characterCounts[sentence[i].toLowerCase()] === 1) 
             {
-            unique += str[i];
+            uniqueCharacters += sentence[i];
         }
     }
 
-    return unique;
+    return uniqueCharacters;
 }
-
-console.log(uniqueChars("success"));
+const input = "Success";
+const result = uniqueChars(input);
+console.log("Output:", result);

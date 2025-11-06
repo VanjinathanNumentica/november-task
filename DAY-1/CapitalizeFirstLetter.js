@@ -4,36 +4,39 @@
 // capitalizeWords("numentica ui private limited");
 // Output: "Numentica Ui Private Limited"
 
-function capitalizeWords(input) 
+function capitalizeWords(sentence) 
 {
-    let result = "";
+    if (typeof sentence !== 'string' || sentence.length === 0 )
+        return "Error: Empty String or Input must be string";
+
+    let resultText = "";
     let capitalizeNext = true;
 
-    for (let i = 0; i < input.length; i++) 
+    for (let i = 0; i < sentence.length; i++) 
         {
-        let char = input[i];
-        if (char === " ") 
+        let currentChar = sentence[i];
+        if (currentChar === " ") 
             {
-            result += char;
+            resultText += currentChar;
             capitalizeNext = true;
             } 
             else 
                 {
                 if (capitalizeNext) 
                     {
-                        result += char.toUpperCase();
+                        resultText += currentChar.toUpperCase();
                         capitalizeNext = false;
                     } 
                     else 
                     {
-                        result += char.toLowerCase();
+                        resultText += currentChar.toLowerCase();
                      }
         }
     }
 
-    return result;
+    return resultText;
 }
 
 const input = "numentica ui private limited";
-const output = capitalizeWords(input);
-console.log("Capitalized words:", output);
+const result = capitalizeWords(input);
+console.log("Output:", result);

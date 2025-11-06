@@ -4,33 +4,36 @@
 // isPalindrome("madam"); // true
 // isPalindrome("hello"); // false
 
-function isPalindrome(str) 
+function isPalindrome(sentence) 
 {
-    let lowerStr = "";
-    for (let i = 0; i < str.length; i++) 
+        if (typeof sentence !== 'string' || sentence.length === 0 )
+        return "Error: Empty String or Input must be string";
+
+    let cleanedText = "";
+    for (let i = 0; i < sentence.length; i++) 
         {
-        let char = str[i];
-        if (char !== " ") 
+        let currentChar = sentence[i];
+        if (currentChar !== " ") 
             {
-            lowerStr += char.toLowerCase();
+            cleanedText += currentChar.toLowerCase();
          }
     }
 
-    let start = 0;
-    let end = lowerStr.length - 1;
+    let startIndex = 0;
+    let endIndex = cleanedText.length - 1;
 
-    while (start < end) 
+    while (startIndex < endIndex) 
         {
-        if (lowerStr[start] !== lowerStr[end]) 
+        if (cleanedText[startIndex] !== cleanedText[endIndex]) 
             {
             return false;
         }
-        start++;
-        end--;
+        startIndex++;
+        endIndex--;
     }
 
     return true;
 }
 
-console.log(isPalindrome("madam"));
+console.log(isPalindrome("Madam"));
 console.log(isPalindrome("hello"));

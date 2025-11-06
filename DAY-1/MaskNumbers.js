@@ -4,26 +4,28 @@
 // maskNumbers("My pin is 1234 and code 56");
 // Output: "My pin is #### and code ##"
 
-function maskNumbers(str) 
-{
-    let result = "";
+function maskNumbers(sentence) {
+    if (typeof sentence !== 'string' || sentence.length === 0 )
+        return "Error: Empty String or Input must be string";
 
-    for (let i = 0; i < str.length; i++) 
+    let currentSymbol = "";
+
+    for (let i = 0; i < sentence.length; i++) 
         {
-        let char = str[i];
+        let Currentchar = sentence[i];
 
-        if (char >= '0' && char <= '9') 
+        if (Currentchar >= '0' && Currentchar <= '9') 
             {
-            result += '#';
+            currentSymbol += '#';
         } else 
             {
-            result += char;
+            currentSymbol += Currentchar;
         }
     }
 
-    return result;
+    return currentSymbol;
 }
 
 const input = "My pin is 1234 and code 56";
-const output = maskNumbers(input);
-console.log("Masked string:", output);
+const result = maskNumbers(input);
+console.log("Output:", result);

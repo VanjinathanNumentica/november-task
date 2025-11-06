@@ -5,19 +5,26 @@
 // Output: "javascript from world hello"
 
 function reverseWords(sentence) {
+        if (typeof sentence !== 'string' || sentence.length === 0 )
+            return "Error: Empty String or Input must be string";   
+   
     let word = "";
     let wordsArray = [];
 
     for (let i = 0; i <= sentence.length; i++) {
-        let char = sentence[i];
+        let currentChar = sentence[i];
 
-        if (char === " " || char === undefined) {
+         if(currentChar >= '0' && currentChar <= '9'){
+        return "Error: Input must be contains only String";
+    }
+
+        if (currentChar === " " || i === sentence.length) {
             if (word.length > 0) {
                 wordsArray[wordsArray.length] = word;
                 word = "";
             }
         } else {
-            word += char;
+            word += currentChar;
         }
     }
 
@@ -33,5 +40,5 @@ function reverseWords(sentence) {
 }
 
 const input = "hello world from javascript";
-const output = reverseWords(input);
-console.log("Reversed words:", output);
+const result = reverseWords(input);
+console.log("Output:", result);

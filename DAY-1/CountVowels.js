@@ -4,19 +4,25 @@
 // countVowels("numentica ui solutions");
 // Output: 9
 
-function countVowels(str) {
-  const vowels = 'aeiouAEIOU';
-  let count = 0;
+function countVowels(sentence) {
+  if (typeof sentence !== 'string' || sentence.length === 0 )
+        return "Error: Empty String or Input must be string";
+  
+  let lowerSentence = sentence.toLowerCase()
+  let vowelsCount = 0;
 
-  for (let char of str) {
-    if (vowels.includes(char)) {
-      count++;
+  for (let i = 0; i < lowerSentence.length; i++) 
+    {
+    let char = lowerSentence[i];
+      if ( char === 'a' || char === 'e' || char === 'i' || char === 'o' || char === 'u')
+    {
+      vowelsCount++;
     }
   }
 
-  return count;
+  return vowelsCount;
 }
 
 const input = "numentica ui solutions";
 const result = countVowels(input);
-console.log("Count of the vowels is:", result);
+console.log("Output:", result);
